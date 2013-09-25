@@ -15,5 +15,28 @@ var Contact = Backbone.Model.extend({
 	fullName: function () {
 		return [this.get('firstName'), this.get('lastName')].join(' ');
 	},
+
+	matches: function(expr){
+		if(expr === null) return true;
+
+		var hasMatch = _.some(this.hasMatchable(), function(field){
+			return field.match(expr) !== null;
+		});
+
+		if(hasMatch) return true;
+
+		return false;
+	},
+
+	hasMatchable: function(){
+		var matchable = [
+			this.get('firstName'),
+			this.get('lastName'),
+			this.get('email'),
+			this.get('phone'),
+		];
+
+		return matchable;
+	}
 	
-})
+});

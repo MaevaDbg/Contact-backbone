@@ -9,8 +9,25 @@
 	<body>
 		<h1>Contact Book</h1>
 
+		<div id="contact-book">
+			
+			<div class="grid">
+				<div class="cell cell30" id="roster">
+					<button id="new-contact">Add a contact</button>
+					<input type="search" id="filter-contacts" placeholder="Search..." />
+
+					<ul id="contact-list">
+						
+					</ul>
+				</div>
+				<div class="cell cell70">
+					<div id="contact-details"></div>
+				</div>
+			</div>
+		</div>
 
 
+		
 		<script src="js/vendor/json2-min.js" charset="utf-8"></script>
 		<script src="js/vendor/zepto-min.js" charset="utf-8"></script>
 		<script src="js/vendor/handlebars-min.js" charset="utf-8"></script>
@@ -19,5 +36,9 @@
 		<script src="js/vendor/backbone.localStorage-min.js" charset="utf-8"></script>
 
 		<script src="js/models/contact.js" charset="utf-8"></script>
+
+		<script src="js/collections/contact_book.js" charset="utf-8"></script>
+
+		
 	</body>
 </html>

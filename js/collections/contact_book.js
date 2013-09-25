@@ -1,5 +1,5 @@
 var ContactBook = Backbone.Collection.extend({
-	model: contact,
+	model: Contact,
 
 	localStorage: new Backbone.LocalStorage('contact-book'),
 
@@ -12,4 +12,4 @@ var ContactBook = Backbone.Collection.extend({
 			if(contact.matches(expr)) return true;
 		});
 	},
-})
+});
