@@ -19,7 +19,7 @@ var Contact = Backbone.Model.extend({
 	matches: function(expr){
 		if(expr === null) return true;
 
-		var hasMatch = _.some(this.hasMatchable(), function(field){
+		var hasMatch = _.some(this.asMatchable(), function(field){
 			return field.match(expr) !== null;
 		});
 
@@ -28,7 +28,7 @@ var Contact = Backbone.Model.extend({
 		return false;
 	},
 
-	hasMatchable: function(){
+	asMatchable: function(){
 		var matchable = [
 			this.get('firstName'),
 			this.get('lastName'),

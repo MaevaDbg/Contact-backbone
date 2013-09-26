@@ -1,44 +1,75 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>Contact Book</title>
-		<link rel="stylesheet" href="css/normalize.css" type="text/css" charset="utf-8" />
-		<link rel="stylesheet" href="css/master.css" type="text/css" charset="utf-8" />
-	</head>
-	<body>
-		<h1>Contact Book</h1>
+<head>
+  <meta charset="utf-8" />
+  <title>Contact Book</title>
+  <link rel="stylesheet" href="css/normalize.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="css/master.css" type="text/css" charset="utf-8" />
+</head>
+<body>
 
-		<div id="contact-book">
-			
-			<div class="grid">
-				<div class="cell cell30" id="roster">
-					<button id="new-contact">Add a contact</button>
-					<input type="search" id="filter-contacts" placeholder="Search..." />
+  <h1>Contact Book</h1>
 
-					<ul id="contact-list">
-						
-					</ul>
-				</div>
-				<div class="cell cell70">
-					<div id="contact-details"></div>
-				</div>
-			</div>
-		</div>
+  <div id="contact-book">
+    <div class="grid">
+      <div class="cell cell30" id="roster">
+        <button id="new-contact">Add a contact</button>
+        <input type="search" id="filter-contacts" placeholder="Search…" />
+
+        <ul id="contact-list">
+        </ul>
+      </div>
+
+      <div class="cell cell70">
+        <div id="contact-details"></div>
+      </div>
+    </div>
+  </div>
 
 
-		
-		<script src="js/vendor/json2-min.js" charset="utf-8"></script>
-		<script src="js/vendor/zepto-min.js" charset="utf-8"></script>
-		<script src="js/vendor/handlebars-min.js" charset="utf-8"></script>
-		<script src="js/vendor/underscore-min.js" charset="utf-8"></script>
-		<script src="js/vendor/backbone-min.js" charset="utf-8"></script>
-		<script src="js/vendor/backbone.localStorage-min.js" charset="utf-8"></script>
+  <script type="text/template" id="contact-template" charset="utf-8">
+    <div class="grid">
+      <div class="cell cell50">
+        <input type="text" value="{{firstName}}" placeholder="First name" class="contact-firstName" />
+      </div>
+      <div class="cell cell50">
+        <input type="text" value="{{lastName}}" placeholder="Last name" class="contact-lastName" />
+      </div>
+      <div class="cell">
+        <input type="text" value="{{email}}" placeholder="Email" class="contact-email" />
+      </div>
+      <div class="cell">
+        <input type="text" value="{{phone}}" placeholder="Phone number" class="contact-phone" />
+      </div>
+      <div class="cell">
+        <button class="remove-contact">Remove</button>
+      </div>
+    </div>
+  </script>
 
-		<script src="js/models/contact.js" charset="utf-8"></script>
+  <script src="js/vendor/json2-min.js" charset="utf-8"></script>
+  <script src="js/vendor/zepto-min.js" charset="utf-8"></script>
+  <script src="js/vendor/handlebars-min.js" charset="utf-8"></script>
+  <script src="js/vendor/underscore-min.js" charset="utf-8"></script>
+  <script src="js/vendor/backbone-min.js" charset="utf-8"></script>
+  <script src="js/vendor/backbone.localStorage-min.js" charset="utf-8"></script>
 
-		<script src="js/collections/contact_book.js" charset="utf-8"></script>
+  <script src="js/models/contact.js" charset="utf-8"></script>
+  <script src="js/collections/contact_book.js" charset="utf-8"></script>
+  <script src="js/views/contact_list_view.js" charset="utf-8"></script>
+  <script src="js/views/item_view.js" charset="utf-8"></script>
+  <script src="js/views/contact_view.js" charset="utf-8"></script>
+  <script src="js/views/app_view.js" charset="utf-8"></script>
 
-		
-	</body>
+  <script charset="utf-8">
+    /* <![CDATA[ */
+    var cb = {};
+    $(function() {
+      cb.Contacts = new ContactBook();
+      cb.App = new AppView(cb.Contacts);
+    });
+    /* ]]> */
+  </script>
+</body>
 </html>
+

@@ -14,7 +14,7 @@ var AppView = Backbone.View.extend({
 
 	newContact: function(){
 		this.collection.create({firstName: 'unnamed'});
-		this.selectContact(this.collection.last);
+		this.selectContact(this.collection.last());
 	},
 
 	selectContact: function(contact){
@@ -24,7 +24,7 @@ var AppView = Backbone.View.extend({
 
 	showContact: function(contact){
 		var view = new ContactView({model: contact});
-		this.$("contact-details").html(view.render().el);
+		this.$("#contact-details").html(view.render().el);
 
 		var input = view.$(".contact-firstName").get(0);
 		input.focus();
